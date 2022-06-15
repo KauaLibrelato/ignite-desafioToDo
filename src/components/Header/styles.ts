@@ -4,34 +4,26 @@ import { theme } from "../../global/theme";
 
 export const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: 104 + getStatusBarHeight(),
-    backgroundColor: "#8257E5",
-    zIndex: 1,
-  },
-  content: {
+    paddingTop: getStatusBarHeight(true) + 16,
     paddingHorizontal: 24,
-    flexDirection: "row",
-    justifyContent: "center",
+    paddingBottom: 60,
+    backgroundColor: "#8257E5",
+    justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 18 + getStatusBarHeight(),
-    zIndex: 2,
+    flexDirection: "row",
   },
-  image: {
-    marginRight: 126,
+  tasks: {
+    alignItems: "center",
+    flexDirection: "row",
   },
-  text: {
-    marginRight: 5,
-    color: "#fff",
+  tasksCounter: {
     fontSize: 15,
+    color: "#fff",
     fontFamily: theme.fonts.text500,
   },
-  boldText: {
-    color: "#fff",
+  tasksCounterBold: {
     fontSize: 15,
+    color: "#fff",
     fontFamily: theme.fonts.text700,
-  },
-  textArea: {
-    zIndex: 1,
   },
 });

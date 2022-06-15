@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { View, Text, Image } from "react-native";
 
-import { View, Image, Text } from "react-native";
-import Logo1x from "../../assets/logo.png";
 import { styles } from "./styles";
+import logoImg from "../../assets/logo.png";
 
-export function Header() {
+interface HeaderProps {
+  tasksCounter: number;
+}
+
+export function Header({ tasksCounter }: HeaderProps) {
+  const tasksCounterText = tasksCounter === 1 ? "tarefa" : "tarefas";
+
   return (
     <View style={styles.container}>
-      <View style={styles.content}>
-        <Image source={Logo1x} style={styles.image} />
-        <Text style={styles.text}>Você tem</Text>
-        <Text style={styles.boldText}>0 tarefas</Text>
+      <Image source={logoImg} />
+
+      <View style={styles.tasks}>
+        <Text style={styles.tasksCounter}>Você tem </Text>
+        <Text style={styles.tasksCounterBold}>
+          <Text style={styles.tasksCounterBold}>
+            {tasksCounter} {tasksCounterText}
+          </Text>
+        </Text>
       </View>
     </View>
   );

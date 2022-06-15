@@ -1,11 +1,32 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
-    width: 327,
-    height: 56,
+  inputContainer: {
     backgroundColor: "#fff",
     borderRadius: 5,
-    paddingHorizontal: 24,
+    marginTop: -28,
+    marginHorizontal: 24,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  input: {
+    flex: 1,
+    height: 56,
+    paddingHorizontal: 20,
+    backgroundColor: "#FFF",
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+    borderRightWidth: 1,
+    borderRightColor: "#EBEBEB",
+    color: "#666666",
+  },
+  addButton: {
+    backgroundColor: "#fff",
+    height: 56,
+    paddingHorizontal: 12,
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
   },
 });
