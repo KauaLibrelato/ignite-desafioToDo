@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  FlatList,
-  Image,
-  TouchableOpacity,
-  View,
-  Text,
-  FlatListProps,
-} from "react-native";
+import { FlatList, FlatListProps } from "react-native";
+import { EditTasksProps } from "../../screens/Home";
 
-import { Feather } from "@expo/vector-icons";
 import { ItemWrapper } from "../ItemWrapper";
+import { TaskItem } from "../TaskItem";
 
 import { styles } from "./styles";
-import trashIcon from "../../assets/trash.png";
 
 export interface Task {
   id: number;
@@ -24,12 +17,14 @@ interface TasksListProps {
   tasks: Task[];
   toggleTaskDone: (id: number) => void;
   removeTask: (id: number) => void;
+  editTask: ({ taskId, taskNewTitle }: EditTasksProps) => void;
 }
 
 export function TasksList({
   tasks,
   toggleTaskDone,
   removeTask,
+  editTask,
 }: TasksListProps) {
   return (
     <FlatList
@@ -40,33 +35,12 @@ export function TasksList({
       renderItem={({ item, index }) => {
         return (
           <ItemWrapper index={index}>
-            <View>
-              <TouchableOpacity
-                testID={`button-${index}`}
-                activeOpacity={0.7}
-                style={styles.taskButton}
-                onPress={() => toggleTaskDone(item.id)}
-              >
-                <View
-                  testID={`marker-${index}`}
-                  style={item.done ? styles.taskMarkerDone : styles.taskMarker}
-                >
-                  {item.done && <Feather name="check" size={12} color="#fff" />}
-                </View>
-
-                <Text style={item.done ? styles.taskTextDone : styles.taskText}>
-                  {item.title}
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity
-              testID={`trash-${index}`}
-              style={{ paddingHorizontal: 24 }}
-              onPress={() => removeTask(item.id)}
-            >
-              <Image source={trashIcon} />
-            </TouchableOpacity>
+            <TaskItem
+              task={item}
+              editTask={editTask}
+              removeTask={removeTask}
+              toggleTaskDone={toggleTaskDone}
+            />
           </ItemWrapper>
         );
       }}
